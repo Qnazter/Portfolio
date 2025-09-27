@@ -23,6 +23,7 @@ import {
   Sparkles,
   InstagramIcon
 } from "lucide-react";
+import { title } from "process";
 
 const Index = () => {
   const [isVisible, setIsVisible] = useState({});
@@ -68,24 +69,24 @@ const Index = () => {
   const projects = [
     {
       title: "SineNix",
-      description: "Full-stack web application with React, Node.js, and PostgreSQL. Features include user authentication, payment processing, and admin dashboard.",
-      tech: ["React", "TailwildCSS", "HTML", "Javascript"],
+      description: "A web application powered by Wix, with the front-end I designed to help students manage or track their university entrance exam studies and subject management.",
+      tech: ["React", "TailwildCSS", "WixSDK", "Javascript","TypeScript","Astro","Node.js"],
       liveUrl: "#",
       githubUrl: "#"
     },
     {
       title: "TikTokDownloader",
-      description: "Real-time collaborative task management application with drag-and-drop functionality and team collaboration features.",
-      tech: ["Node.js", "Ngrok", "LineSDK", "API"],
-      liveUrl: "https://github.com/Qnazter/TikTokDownloader",
+      description: "A tool that lets users download TikTok videos for offline viewing, with an option to obtain a clean copy when the uploader has given permission.",
+      tech: ["Node.js", "Ngrok", "LineSDK", "API","Render","Github"],
+      liveUrl: "https://lin.ee/Z4hFhGP",
       githubUrl: "https://github.com/Qnazter/TikTokDownloader"
     },
     {
       title: "Unity Game",
-      description: "Data visualization dashboard for API metrics with real-time monitoring, performance tracking, and automated reporting.",
+      description: "In the RSU Rookie Game Dev project, I created a 2D Unity game where players run, jump, and dodge obstacles, while learning game physics, C#, and problem-solving.",
       tech: ["Unity", "C#", "Chart.js", "Redis"],
-      liveUrl: "#",
-      githubUrl: "#"
+      liveUrl: "https://youtu.be/zN1b8Sil0pI",
+      githubUrl: "./NotAvailable.html"
     }
   ];
 
@@ -132,7 +133,11 @@ const Index = () => {
           <div className="text-center max-w-4xl mx-auto animate-fade-in">
             <div className="mb-8">
               <div className="w-32 h-32 mx-auto mb-6 rounded-full gradient-card glow-effect flex items-center justify-center animate-scale-pulse relative">
-                <User className="w-16 h-16 text-primary" />
+                <img 
+                  src="/logo.jpg" 
+                  alt="Logo" 
+                  className="w-24 h-24 object-cover rounded-full"
+                />
                 <div className="absolute inset-0 rounded-full border-2 border-primary/20 animate-ping" />
                 <div className="absolute -top-2 -right-2 w-6 h-6 bg-primary rounded-full flex items-center justify-center animate-bounce">
                   <Sparkles className="w-3 h-3 text-primary-foreground" />
@@ -145,17 +150,31 @@ const Index = () => {
               Student 
             </p>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Curious learner passionate about exploring computer science and building meaningful projects Aspiring to create technology that empowers education and improves everyday life
+              A regular 17-year-old with dreams of becoming a software developer and making this world a better place through technology.
             </p>
           </div>
           
           <div className="flex gap-4 justify-center mb-12">
-            <Button className="gradient-primary hover:glow-effect smooth-transition transform hover:scale-105 animate-float" size="lg">
+            <Button
+              className="gradient-primary hover:glow-effect smooth-transition transform hover:scale-105 animate-float"
+              size="lg"
+              onClick={() => {
+                const section = document.getElementById("section-contact");
+                if (section) {
+                  section.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+            >
               <Mail className="w-4 h-4 mr-2" />
               Contact Me
               <Zap className="w-4 h-4 ml-2" />
             </Button>
-            <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary/10 transform hover:scale-105 smooth-transition">
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="border-primary text-primary hover:bg-primary/10 transform hover:scale-105 smooth-transition"
+              onClick={() => scrollToSection('section-projects')}
+            >
               <Github className="w-4 h-4 mr-2" />
               View Projects
             </Button>
@@ -163,7 +182,7 @@ const Index = () => {
           
           <button 
             onClick={() => scrollToSection('section-about')}
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce hover:text-accent smooth-transition"
+            className="absolute bottom-4 left-1/2 transform -translate-x-1/2 animate-bounce hover:text-accent smooth-transition"
           >
             <ChevronDown className="w-8 h-8 text-primary glow-effect" />
           </button>
@@ -179,8 +198,8 @@ const Index = () => {
               <div className="text-center mb-16">
                 <h2 className="text-4xl font-bold mb-4 text-gradient animate-slide-in-left">About Me</h2>
                 <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                  I'm a dedicated IT student with a passion for software development and technology innovation. 
-                  Currently pursuing my degree while building practical experience through personal projects and internships.
+                  I am passionate about software and technology. I am currently studying while gaining real-world experience  
+                  through the projects I create, hoping that anyone who come across them will take away something, even if just a little, from my work.
                 </p>
               </div>
             </ParallaxSection>
@@ -228,10 +247,10 @@ const Index = () => {
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-2">
-                      <p className="font-semibold">Dean's List</p>
-                      <p className="text-muted-foreground">Fall 2023, Spring 2024</p>
-                      <p className="text-sm text-muted-foreground">Top 10% of class</p>
-                      <p className="text-sm">Programming Competition Winner</p>
+                      <p className="font-semibold">Futsal Player Being Captain</p>
+                      <p className="text-muted-foreground">2024 December</p>
+                      <p className="text-sm text-muted-foreground">Nationwide tournament: Satit Samakkee</p>
+                      <p className="text-sm">winning 2nd runner-up among 11 teams</p>
                     </div>
                   </CardContent>
                 </Card>
@@ -249,7 +268,7 @@ const Index = () => {
               <div className="text-center mb-16">
                 <h2 className="text-4xl font-bold mb-4 text-gradient animate-slide-in-left">Activities & Involvement</h2>
                 <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-                  Extracurricular activities, leadership roles, and community involvement
+                  Extracurricular activities, leadership roles, Sport and community involvement
                 </p>
               </div>
             </ParallaxSection>
@@ -259,19 +278,14 @@ const Index = () => {
                 <Card className="gradient-card border-border/50 card-glow hover:glow-effect smooth-transition h-full animate-float">
                   <CardHeader>
                     <Briefcase className="w-8 h-8 text-primary mb-2 animate-scale-pulse" />
-                    <CardTitle>Student Organizations</CardTitle>
+                    <CardTitle>Extracurricular activities</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-4">
                       <div>
-                        <p className="font-semibold">Computer Science Club - President</p>
-                        <p className="text-muted-foreground text-sm">2023 - Present</p>
-                        <p className="text-sm">Organizing hackathons and coding workshops</p>
-                      </div>
-                      <div>
-                        <p className="font-semibold">Tech Mentorship Program</p>
-                        <p className="text-muted-foreground text-sm">2024 - Present</p>
-                        <p className="text-sm">Mentoring freshman CS students</p>
+                        <p className="font-semibold">Colorguard Sports Day</p>
+                        <p className="text-muted-foreground text-sm">2025 - January</p>
+                        <p className="text-sm">I joined my school’s color guard performing for sports day, developing teamwork, perseverance, self-practice, and responsibility.</p>
                       </div>
                     </div>
                   </CardContent>
@@ -282,19 +296,14 @@ const Index = () => {
                 <Card className="gradient-card border-border/50 card-glow hover:glow-effect smooth-transition h-full animate-float" style={{ animationDelay: '1s' }}>
                   <CardHeader>
                     <Award className="w-8 h-8 text-primary mb-2 animate-scale-pulse" />
-                    <CardTitle>Competitions & Events</CardTitle>
+                    <CardTitle>Leadership roles</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-4">
                       <div>
-                        <p className="font-semibold">Regional Hackathon Winner</p>
-                        <p className="text-muted-foreground text-sm">Spring 2024</p>
-                        <p className="text-sm">1st place in AI/ML category</p>
-                      </div>
-                      <div>
-                        <p className="font-semibold">Programming Contest Participant</p>
-                        <p className="text-muted-foreground text-sm">2023 - 2024</p>
-                        <p className="text-sm">Multiple top-10 finishes</p>
+                        <p className="font-semibold">The 53rd student council</p>
+                        <p className="text-muted-foreground text-sm">2024 - 2025</p>
+                        <p className="text-sm">As a member of the 53rd student council, I developed communication, responsibility, and leadership through hands-on work in the lighting and sound team, managing events like sports day and cheer performances, while gaining technical skills in audio, UniversalControl, and problem-solving.</p>
                       </div>
                     </div>
                   </CardContent>
@@ -305,19 +314,14 @@ const Index = () => {
                 <Card className="gradient-card border-border/50 card-glow hover:glow-effect smooth-transition h-full animate-float" style={{ animationDelay: '2s' }}>
                   <CardHeader>
                     <User className="w-8 h-8 text-primary mb-2 animate-scale-pulse" />
-                    <CardTitle>Leadership Roles</CardTitle>
+                    <CardTitle>Sport</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-4">
                       <div>
-                        <p className="font-semibold">Student Council Representative</p>
-                        <p className="text-muted-foreground text-sm">2023 - 2024</p>
-                        <p className="text-sm">Advocating for student tech initiatives</p>
-                      </div>
-                      <div>
-                        <p className="font-semibold">Coding Bootcamp Instructor</p>
-                        <p className="text-muted-foreground text-sm">Summer 2024</p>
-                        <p className="text-sm">Teaching web development basics</p>
+                        <p className="font-semibold">Futsal Player</p>
+                        <p className="text-muted-foreground text-sm">2022 - Present</p>
+                        <p className="text-sm">I captained our girls’ futsal team at the Jao-Ram-Games, winning 2nd runner-up among 11 teams, which taught me responsibility, perseverance, quick decision-making under pressure, and true leadership built on trust.</p>
                       </div>
                     </div>
                   </CardContent>
@@ -333,14 +337,9 @@ const Index = () => {
                   <CardContent>
                     <div className="space-y-4">
                       <div>
-                        <p className="font-semibold">Code for Community Volunteer</p>
-                        <p className="text-muted-foreground text-sm">2023 - Present</p>
-                        <p className="text-sm">Building websites for local nonprofits</p>
-                      </div>
-                      <div>
-                        <p className="font-semibold">STEM Outreach Program</p>
-                        <p className="text-muted-foreground text-sm">2024</p>
-                        <p className="text-sm">Teaching coding to high school students</p>
+                        <p className="font-semibold">Hospital Internship</p>
+                        <p className="text-muted-foreground text-sm">2024 - April</p>
+                        <p className="text-sm">During my internship at Nakornping Hospital, I assisted with documentation and public service, developing attention to detail, teamwork, and a sense of public responsibility applicable to any career.</p>
                       </div>
                     </div>
                   </CardContent>
@@ -367,7 +366,7 @@ const Index = () => {
             <div className="grid md:grid-cols-3 gap-8">
               {skills.map((skillGroup, index) => (
                 <FloatingCard key={index} intensity={0.3}>
-                  <Card className="gradient-card border-border/50 card-glow hover:glow-effect smooth-transition h-full animate-fade-in" style={{ animationDelay: `${index * 0.2}s` }}>
+                  <Card className="gradient-card border-border/50 card-glow hover:glow-effect smooth-transition group h-full animate-slide-in-left relative z-30 isolate" style={{ animationDelay: `${index * 0.1}s` }}>
                     <CardHeader>
                       <div className="flex items-center gap-3">
                         {index === 0 && <Code className="w-6 h-6 text-primary animate-scale-pulse" />}
@@ -413,7 +412,7 @@ const Index = () => {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {projects.map((project, index) => (
                 <FloatingCard key={index} intensity={0.4}>
-                  <Card className="gradient-card border-border/50 card-glow hover:glow-effect smooth-transition group h-full animate-slide-in-left" style={{ animationDelay: `${index * 0.1}s` }}>
+                  <Card className="gradient-card border-border/50 card-glow hover:glow-effect smooth-transition group h-full animate-slide-in-left relative z-30 isolate" style={{ animationDelay: `${index * 0.1}s` }}>
                     <CardHeader>
                       <CardTitle className="flex items-center gap-2">
                         <Globe className="w-5 h-5 text-primary animate-rotate-slow" />
@@ -437,14 +436,41 @@ const Index = () => {
                           ))}
                         </div>
                         
-                        <div className="flex gap-2">
-                          <Button size="sm" className="gradient-primary hover:glow-effect smooth-transition transform hover:scale-105">
-                            <ExternalLink className="w-4 h-4 mr-1" />
-                            Live Demo
+                        <div className="flex gap-2 relative z-50 pointer-events-auto">
+                          <Button 
+                            asChild
+                            size="sm" 
+                            className="gradient-primary hover:glow-effect smooth-transition transform hover:scale-105 cursor-pointer z-30 relative"
+                          >
+                            <a
+                               className="pointer-events-auto"
+                               href={project.liveUrl}
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               onClick={(e) => e.stopPropagation()}
+                               aria-label={`Open live demo: ${project.title}`}
+                             >
+                              <ExternalLink className="w-4 h-4 mr-1" />
+                              Live Demo
+                            </a>
                           </Button>
-                          <Button size="sm" variant="outline" className="border-primary text-primary transform hover:scale-105 smooth-transition">
-                            <Github className="w-4 h-4 mr-1" />
-                            Code
+                          <Button 
+                            asChild
+                            size="sm" 
+                            variant="outline" 
+                            className="border-primary text-primary transform hover:scale-105 smooth-transition cursor-pointer z-30 relative"
+                          >
+                            <a
+className="pointer-events-auto"
+                               href={project.githubUrl}
+                               target="_blank"
+                               rel="noopener noreferrer"
+                               onClick={(e) => e.stopPropagation()}
+                               aria-label={`Open source code: ${project.title}`}
+                             >
+                              <Github className="w-4 h-4 mr-1" />
+                              Code
+                            </a>
                           </Button>
                         </div>
                       </div>
@@ -464,7 +490,7 @@ const Index = () => {
             <ParallaxSection speed={0.05}>
               <h2 className="text-4xl font-bold mb-4 text-gradient">Get In Touch</h2>
               <p className="text-xl text-muted-foreground mb-12">
-                I'm always interested in new opportunities and collaborations
+                Thanks
               </p>
             </ParallaxSection>
             

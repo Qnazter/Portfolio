@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Not Available Now</title>
+  <style>
+    :root{
+      --bg:#000;
+      --accent: #39ff14; /* neon green accent */
+      --muted: rgba(255,255,255,0.08);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0}
+    body{
+      background: linear-gradient(180deg,#000 0%, #050505 50%, #000 100%);
+      color: #fff;
+      font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      display:grid;place-items:center;overflow:hidden;
+    }
+
+    /* subtle animated vignette / moving noise */
+    .bg-move{
+      position:fixed;inset:0;z-index:0;pointer-events:none;
+      background:
+        radial-gradient(800px 400px at 10% 10%, rgba(57,255,20,0.02), transparent),
+        radial-gradient(600px 300px at 90% 90%, rgba(0,112,255,0.02), transparent),
+        linear-gradient(0deg, rgba(255,255,255,0.01), transparent);
+      animation: floatBg 12s linear infinite alternate;
+      mix-blend-mode: screen;
+    }
+    @keyframes floatBg{
+      from{transform:translate3d(-5%, -3%,0) rotate(0.001deg)}
+      to{transform:translate3d(5%, 3%,0) rotate(0.001deg)}
+    }
+
+    /* centered card */
+    .card{
+      position:relative;z-index:2;
+      padding:2.5rem 3rem;
+      text-align:center;
+      border-radius:16px;
+      backdrop-filter: blur(6px) saturate(120%);
+      -webkit-backdrop-filter: blur(6px) saturate(120%);
+      box-shadow: 0 6px 30px rgba(0,0,0,0.6), 0 1px 0 rgba(255,255,255,0.02) inset;
+      border:1px solid rgba(255,255,255,0.04);
+      min-width:260px;max-width:90vw;
+    }
+
+    h1{
+      margin:0;font-weight:700;font-size:clamp(20px,6vw,44px);letter-spacing:0.04em;
+      color:var(--accent);
+      text-shadow:
+        0 0 20px rgba(57,255,20,0.08),
+        0 2px 24px rgba(0,0,0,0.6);
+      transform:translateY(0);
+      animation: floatText 3.5s ease-in-out infinite;
+    }
+    @keyframes floatText{
+      0%{transform:translateY(0)}
+      50%{transform:translateY(-6px)}
+      100%{transform:translateY(0)}
+    }
+
+    p.subtitle{
+      margin:12px 0 0;font-size:14px;color:rgba(255,255,255,0.65);
+      letter-spacing:0.02em;
+      animation: fadeIn 1.2s ease both;
+    }
+    @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+    /* small accent line that slowly grows */
+    .bar{height:4px;width:60px;margin:14px auto 0;border-radius:999px;background:linear-gradient(90deg,var(--accent),rgba(57,255,20,0.5));opacity:0.95;animation:grow 3s ease forwards;}
+    @keyframes grow{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+    /* floating particles */
+    .particles{position:fixed;inset:0;z-index:1;pointer-events:none}
+    .particle{position:absolute;width:6px;height:6px;border-radius:999px;background:var(--muted);opacity:0.8;transform:translate3d(0,0,0);animation: drift 8s linear infinite}
+    .particle.alt{width:3px;height:3px;opacity:0.6}
+    @keyframes drift{
+      0%{transform:translateY(0) translateX(0) scale(1);opacity:.9}
+      50%{transform:translateY(-40vh) translateX(6vw) scale(0.9);opacity:.3}
+      100%{transform:translateY(-80vh) translateX(-6vw) scale(0.7);opacity:0}
+    }
+
+    /* responsive */
+    @media (max-width:420px){
+      .card{padding:2rem}
+      h1{font-size:28px}
+    }
+
+  </style>
+</head>
+<body>
+  <div class="bg-move" aria-hidden="true"></div>
+
+  <div class="card" role="status" aria-live="polite">
+    <h1>Not available now</h1>
+    <div class="bar" aria-hidden="true"></div>
+    <p class="subtitle">ขออภัย หน้านี้ยังไม่พร้อมใช้งาน — ลองกลับมาใหม่ภายหลัง</p>
+  </div>
+
+  <div class="particles" aria-hidden="true" id="particles"></div>
+
+  <script>
+    // create a few drifting particles for subtle motion
+    const pWrap = document.getElementById('particles');
+    const COUNT = 14;
+    for(let i=0;i<COUNT;i++){
+      const el = document.createElement('div');
+      el.className = 'particle' + (Math.random()>0.6 ? ' alt' : '');
+      el.style.left = (Math.random()*100)+'%';
+      el.style.top = (90 + Math.random()*10)+'%'; // start near bottom
+      el.style.animationDuration = (6 + Math.random()*8)+'s';
+      el.style.opacity = (0.2 + Math.random()*0.8).toFixed(2);
+      el.style.transform = `translate3d(0,0,0) scale(${0.6+Math.random()*1.2})`;
+      pWrap.appendChild(el);
+    }
+
+    // small accessibility: press space to toggle a hint (no navigation change)
+    window.addEventListener('keydown', e => {
+      if(e.code === 'Space'){
+        const subtitle = document.querySelector('.subtitle');
+        subtitle.textContent = subtitle.textContent.includes('ลองกลับมา') ? 'กด Space อีกครั้งเพื่อดูข้อความ' : 'ขออภัย หน้านี้ยังไม่พร้อมใช้งาน — ลองกลับมาใหม่ภายหลัง';
+      }
+    });
+  </script>
+</body>
+</html>
