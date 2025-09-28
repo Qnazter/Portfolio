@@ -71,8 +71,8 @@ const Index = () => {
       title: "SineNix",
       description: "A web application powered by Wix, with the front-end I designed to help students manage or track their university entrance exam studies and subject management.",
       tech: ["React", "TailwildCSS", "WixSDK", "Javascript","TypeScript","Astro","Node.js"],
-      liveUrl: "#",
-      githubUrl: "#"
+      liveUrl: "https://my-site-mt3ut87v-wattanakraimetpann.wix-vibe.com",
+      githubUrl: "https://github.com/Qnazter/SineNix"
     },
     {
       title: "TikTokDownloader",
